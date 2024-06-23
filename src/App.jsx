@@ -5,6 +5,7 @@ import ExtractView from './components/ExtractView';
 import RecipeView from './components/RecipeView';
 import ApprovalView from './components/ApprovalView';
 import ReviewView from './components/ReviewView';
+import RotatingEmoji from './components/RotatingEmoji';
 import { fetchRecipeFromUrl } from './services/proxyService';
 import { extractRecipeDetails } from './services/openaiService';
 import { getRecipes, updateRecipes, deleteRecipe } from './services/jsonbin';
@@ -110,24 +111,34 @@ const App = () => {
 
   return (
     <div className="p-4 max-w-4xl mx-auto">
-      <a href="#" onClick={(e) => { e.preventDefault(); setCurrentView('gallery'); }}><h1 className="text-3xl font-bold mb-6">Jim Cook 🥗</h1></a>
-      {currentView === 'gallery' && (
-        <RecipeGallery
-          recipes={recipes}
-          setSelectedRecipe={setSelectedRecipe}
-          setCurrentView={setCurrentView}
-        />
-      )}
-      {currentView === 'extract' && <ExtractView newRecipeUrl={newRecipeUrl} setNewRecipeUrl={setNewRecipeUrl} extractRecipe={extractRecipe} setCurrentView={setCurrentView} extractLoading={extractLoading} />}
-      {currentView === 'approval' && <ApprovalView extractedContent={extractedContent} approveAndSendToOpenAI={approveAndSendToOpenAI} setCurrentView={setCurrentView} convertLoading={convertLoading} />}
-      {currentView === 'review' && parsedRecipe && <ReviewView selectedRecipe={parsedRecipe} addRecipeToDatabase={addRecipeToDatabase} setCurrentView={setCurrentView} addLoading={addLoading} />}
-      {currentView === 'recipe' && selectedRecipe && (
-        <RecipeView
-          selectedRecipe={selectedRecipe}
-          setCurrentView={setCurrentView}
-          onDeleteRecipe={handleDeleteRecipe}
-          deleteLoading={deleteLoading}
-        />
+      <a href="#" onClick={(e) => { e.preventDefault(); setCurrentView('gallery'); }}>
+        <h1 className="text-3xl font-bold mb-6">Jim Cook 🥗</h1>
+      </a>
+      {loading ? (
+        <div className="flex justify-center items-center h-screen">
+          <RotatingEmoji emoji="🥐" />
+        </div>
+      ) : (
+        <>
+          {currentView === 'gallery' && (
+            <RecipeGallery
+              recipes={recipes}
+              setSelectedRecipe={setSelectedRecipe}
+              setCurrentView={setCurrentView}
+            />
+          )}
+          {currentView === 'extract' && <ExtractView newRecipeUrl={newRecipeUrl} setNewRecipeUrl={setNewRecipeUrl} extractRecipe={extractRecipe} setCurrentView={setCurrentView} extractLoading={extractLoading} />}
+          {currentView === 'approval' && <ApprovalView extractedContent={extractedContent} approveAndSendToOpenAI={approveAndSendToOpenAI} setCurrentView={setCurrentView} convertLoading={convertLoading} />}
+          {currentView === 'review' && parsedRecipe && <ReviewView selectedRecipe={parsedRecipe} addRecipeToDatabase={addRecipeToDatabase} setCurrentView={setCurrentView} addLoading={addLoading} />}
+          {currentView === 'recipe' && selectedRecipe && (
+            <RecipeView
+              selectedRecipe={selectedRecipe}
+              setCurrentView={setCurrentView}
+              onDeleteRecipe={handleDeleteRecipe}
+              deleteLoading={deleteLoading}
+            />
+          )}
+        </>
       )}
       {error && (
         <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-md flex items-center">
