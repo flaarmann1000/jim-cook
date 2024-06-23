@@ -1,0 +1,42 @@
+[
+    {
+      "id": 1,
+      "name": "Classic Apple Pie",
+      "ingredients": [
+        "4 apples",
+        "200g flour",
+        "150g sugar",
+        "100g butter",
+        "2 eggs",
+        "1 tsp baking powder",
+        "1 tsp cinnamon"
+      ],
+      "steps": [
+        { "description": "Preheat the oven to 180°C (350°F).", "ingredients": [] },
+        { "description": "Peel and slice the apples.", "ingredients": ["4 apples"] },
+        { "description": "Mix flour, sugar, butter, eggs, baking powder, and cinnamon in a bowl.", "ingredients": ["200g flour", "150g sugar", "100g butter", "2 eggs", "1 tsp baking powder", "1 tsp cinnamon"] },
+        { "description": "Add the apple slices to the mixture and stir gently.", "ingredients": ["4 apples"] },
+        { "description": "Pour the mixture into a baking dish and bake for 45 minutes.", "ingredients": [] }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Creamy Potato Soup",
+      "ingredients": [
+        "500g potatoes",
+        "1 onion",
+        "2 carrots",
+        "1L vegetable broth",
+        "100ml cream",
+        "Salt and pepper"
+      ],
+      "steps": [
+        { "description": "Peel and chop the potatoes, onion, and carrots.", "ingredients": ["500g potatoes", "1 onion", "2 carrots"] },
+        { "description": "In a large pot, sauté the onion until translucent.", "ingredients": ["1 onion"] },
+        { "description": "Add the chopped potatoes and carrots to the pot.", "ingredients": ["500g potatoes", "2 carrots"] },
+        { "description": "Pour in the vegetable broth and bring to a boil. Simmer until vegetables are tender.", "ingredients": ["1L vegetable broth"] },
+        { "description": "Blend the soup until smooth, then stir in the cream. Season with salt and pepper to taste.", "ingredients": ["100ml cream", "Salt and pepper"] }
+      ]
+    }
+  ]
+  
