@@ -1,11 +1,11 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
 
-// const CORS_ANYWHERE_URL = 'https://cors-anywhere.herokuapp.com/';
-const CORS_ANYWHERE_URL = '';
+// const PROXY_URL = 'https://cors-anywhere.herokuapp.com/';
+const PROXY_URL = process.env.REACT_APP_PROXY_URL;
 
 export const fetchRecipeFromUrl = async (url) => {
-  const response = await axios.get(`${CORS_ANYWHERE_URL}${url}`);
+  const response = await axios.get(`${PROXY_URL}${url}`);
   const htmlContent = response.data;
 
   // Use cheerio to load HTML content
