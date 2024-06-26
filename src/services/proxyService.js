@@ -1,7 +1,8 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
 
-const CORS_ANYWHERE_URL = 'https://cors-anywhere.herokuapp.com/';
+// const CORS_ANYWHERE_URL = 'https://cors-anywhere.herokuapp.com/';
+const CORS_ANYWHERE_URL = '';
 
 export const fetchRecipeFromUrl = async (url) => {
   const response = await axios.get(`${CORS_ANYWHERE_URL}${url}`);
