@@ -17,6 +17,7 @@ h1 {
 
 .font-blue{
   color: var(--primary-color);
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 .card {

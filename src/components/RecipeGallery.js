@@ -1,6 +1,6 @@
-import React from 'react';
-import { Plus } from 'lucide-react';
-import '../styles/styles.css'; 
+import React from "react";
+import { Plus } from "lucide-react";
+import "../styles/styles.css";
 
 const RecipeGallery = ({ recipes, setSelectedRecipe, setCurrentView }) => {
   return (
@@ -11,15 +11,10 @@ const RecipeGallery = ({ recipes, setSelectedRecipe, setCurrentView }) => {
           className="cursor-pointer hover:shadow-lg transition-shadow card"
           onClick={() => {
             setSelectedRecipe(recipe);
-            setCurrentView('recipe');
+            setCurrentView("recipe");
           }}
         >
-          {recipe.imageUrl && (
-            <img
-              src={recipe.imageUrl}
-              alt={recipe.name}
-            />
-          )}
+          {recipe.imageUrl && <img src={recipe.imageUrl} alt={recipe.name} />}
           <div className="card-content">
             <h2 className="font-bold text-xl mb-2">{recipe.name}</h2>
           </div>
@@ -27,10 +22,16 @@ const RecipeGallery = ({ recipes, setSelectedRecipe, setCurrentView }) => {
       ))}
       <div
         className="cursor-pointer hover:shadow-lg transition-shadow add-new card"
-        onClick={() => setCurrentView('extract')}
+        onClick={() => setCurrentView("extract")}
       >
         <Plus size={24} className="mr-2" />
         <span className="font-bold text-xl mb-2">Add New Recipe</span>
+      </div>
+      <div
+        className="cursor-pointer hover:shadow-lg transition-shadow add-new card"
+        onClick={() => setCurrentView("joe")}
+      >
+        <span className="font-bold text-l mb-2">Joe Semola Calculator</span>
       </div>
     </div>
   );

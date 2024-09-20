@@ -1,25 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { AlertCircle } from 'lucide-react';
-import RecipeGallery from './components/RecipeGallery';
-import ExtractView from './components/ExtractView';
-import RecipeView from './components/RecipeView';
-import ApprovalView from './components/ApprovalView';
-import ReviewView from './components/ReviewView';
-import RotatingEmoji from './components/RotatingEmoji';
-import { fetchRecipeFromUrl } from './services/proxyService';
-import { extractRecipeDetails } from './services/openaiService';
-import { getRecipes, updateRecipes, deleteRecipe } from './services/jsonbin';
-import './styles/styles.css';
+import React, { useState, useEffect } from "react";
+import { AlertCircle } from "lucide-react";
+import RecipeGallery from "./components/RecipeGallery";
+import ExtractView from "./components/ExtractView";
+import RecipeView from "./components/RecipeView";
+import ApprovalView from "./components/ApprovalView";
+import ReviewView from "./components/ReviewView";
+import JoeView from "./components/JoeView";
+import RotatingEmoji from "./components/RotatingEmoji";
+import { fetchRecipeFromUrl } from "./services/proxyService";
+import { extractRecipeDetails } from "./services/openaiService";
+import { getRecipes, updateRecipes, deleteRecipe } from "./services/jsonbin";
+import "./styles/styles.css";
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
-  const [currentView, setCurrentView] = useState('gallery');
-  const [newRecipeUrl, setNewRecipeUrl] = useState('');
+  const [currentView, setCurrentView] = useState("gallery");
+  const [newRecipeUrl, setNewRecipeUrl] = useState("");
   const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [extractedContent, setExtractedContent] = useState(null);
   const [parsedRecipe, setParsedRecipe] = useState(null);
-  const [error, setError] = useState('');
-  const [rawResponse, setRawResponse] = useState('');
+  const [error, setError] = useState("");
+  const [rawResponse, setRawResponse] = useState("");
   const [loading, setLoading] = useState(false);
   const [extractLoading, setExtractLoading] = useState(false);
   const [convertLoading, setConvertLoading] = useState(false);
@@ -33,8 +34,8 @@ const App = () => {
         const recipesData = await getRecipes();
         setRecipes(recipesData);
       } catch (error) {
-        console.error('Error loading recipes:', error);
-        setError('Failed to load recipes. Please try again later.');
+        console.error("Error loading recipes:", error);
+        setError("Failed to load recipes. Please try again later.");
       } finally {
         setLoading(false);
       }
@@ -44,35 +45,40 @@ const App = () => {
   }, []);
 
   const extractRecipe = async () => {
-    setError('');
-    setRawResponse('');
+    setError("");
+    setRawResponse("");
     setExtractLoading(true);
     try {
       const { textContent, metaTags } = await fetchRecipeFromUrl(newRecipeUrl);
       setExtractedContent({ textContent, metaTags });
-      setCurrentView('approval');
+      setCurrentView("approval");
     } catch (error) {
-      setError('Failed to extract the recipe. Please check the URL and try again.');
-      console.error('Error extracting recipe:', error);
+      setError(
+        "Failed to extract the recipe. Please check the URL and try again."
+      );
+      console.error("Error extracting recipe:", error);
     } finally {
       setExtractLoading(false);
     }
   };
 
   const approveAndSendToOpenAI = async () => {
-    setError('');
-    setRawResponse('');
+    setError("");
+    setRawResponse("");
     setConvertLoading(true);
     try {
       const { textContent, metaTags } = extractedContent;
-      const extractedRecipe = await extractRecipeDetails({ textContent, metaTags });
-      extractedRecipe.url = newRecipeUrl;  // Add the URL to the extracted recipe
+      const extractedRecipe = await extractRecipeDetails({
+        textContent,
+        metaTags,
+      });
+      extractedRecipe.url = newRecipeUrl; // Add the URL to the extracted recipe
       setParsedRecipe(extractedRecipe);
-      setCurrentView('review');
+      setCurrentView("review");
     } catch (error) {
-      setError('Failed to process the recipe with OpenAI. Please try again.');
+      setError("Failed to process the recipe with OpenAI. Please try again.");
       setRawResponse(error.message); // Display the raw response content
-      console.error('Error processing recipe with OpenAI:', error);
+      console.error("Error processing recipe with OpenAI:", error);
     } finally {
       setConvertLoading(false);
     }
@@ -85,11 +91,11 @@ const App = () => {
       const updatedRecipes = [...recipes, newRecipe];
       await updateRecipes(updatedRecipes);
       setRecipes(updatedRecipes);
-      setCurrentView('gallery');
-      setNewRecipeUrl('');
+      setCurrentView("gallery");
+      setNewRecipeUrl("");
     } catch (error) {
-      setError('Failed to add the recipe to the database. Please try again.');
-      console.error('Error adding recipe:', error);
+      setError("Failed to add the recipe to the database. Please try again.");
+      console.error("Error adding recipe:", error);
     } finally {
       setAddLoading(false);
     }
@@ -99,11 +105,11 @@ const App = () => {
     setDeleteLoading(true);
     try {
       await deleteRecipe(id);
-      setRecipes(recipes.filter(recipe => recipe.id !== id));
-      setCurrentView('gallery'); // Navigate back to the gallery view after deletion
+      setRecipes(recipes.filter((recipe) => recipe.id !== id));
+      setCurrentView("gallery"); // Navigate back to the gallery view after deletion
     } catch (error) {
-      setError('Failed to delete the recipe. Please try again.');
-      console.error('Error deleting recipe:', error);
+      setError("Failed to delete the recipe. Please try again.");
+      console.error("Error deleting recipe:", error);
     } finally {
       setDeleteLoading(false);
     }
@@ -111,7 +117,13 @@ const App = () => {
 
   return (
     <div className="p-4 max-w-4xl mx-auto">
-      <a href="#" onClick={(e) => { e.preventDefault(); setCurrentView('gallery'); }}>
+      <a
+        href="#"
+        onClick={(e) => {
+          e.preventDefault();
+          setCurrentView("gallery");
+        }}
+      >
         <h1 className="text-3xl font-bold mb-6">Jim Cook 🥗</h1>
       </a>
       {loading ? (
@@ -120,17 +132,40 @@ const App = () => {
         </div>
       ) : (
         <>
-          {currentView === 'gallery' && (
+          {currentView === "gallery" && (
             <RecipeGallery
               recipes={recipes}
               setSelectedRecipe={setSelectedRecipe}
               setCurrentView={setCurrentView}
             />
           )}
-          {currentView === 'extract' && <ExtractView newRecipeUrl={newRecipeUrl} setNewRecipeUrl={setNewRecipeUrl} extractRecipe={extractRecipe} setCurrentView={setCurrentView} extractLoading={extractLoading} />}
-          {currentView === 'approval' && <ApprovalView extractedContent={extractedContent} approveAndSendToOpenAI={approveAndSendToOpenAI} setCurrentView={setCurrentView} convertLoading={convertLoading} />}
-          {currentView === 'review' && parsedRecipe && <ReviewView selectedRecipe={parsedRecipe} addRecipeToDatabase={addRecipeToDatabase} setCurrentView={setCurrentView} addLoading={addLoading} />}
-          {currentView === 'recipe' && selectedRecipe && (
+          {currentView === "extract" && (
+            <ExtractView
+              newRecipeUrl={newRecipeUrl}
+              setNewRecipeUrl={setNewRecipeUrl}
+              extractRecipe={extractRecipe}
+              setCurrentView={setCurrentView}
+              extractLoading={extractLoading}
+            />
+          )}
+          {currentView === "approval" && (
+            <ApprovalView
+              extractedContent={extractedContent}
+              approveAndSendToOpenAI={approveAndSendToOpenAI}
+              setCurrentView={setCurrentView}
+              convertLoading={convertLoading}
+            />
+          )}
+          {currentView === "review" && parsedRecipe && (
+            <ReviewView
+              selectedRecipe={parsedRecipe}
+              addRecipeToDatabase={addRecipeToDatabase}
+              setCurrentView={setCurrentView}
+              addLoading={addLoading}
+            />
+          )}
+          {currentView === "joe" && <JoeView setCurrentView={setCurrentView} />}
+          {currentView === "recipe" && selectedRecipe && (
             <RecipeView
               selectedRecipe={selectedRecipe}
               setCurrentView={setCurrentView}
