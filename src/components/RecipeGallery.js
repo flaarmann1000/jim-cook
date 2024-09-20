@@ -31,7 +31,10 @@ const RecipeGallery = ({ recipes, setSelectedRecipe, setCurrentView }) => {
         className="cursor-pointer hover:shadow-lg transition-shadow add-new card"
         onClick={() => setCurrentView("joe")}
       >
-        <span className="font-bold text-l mb-2">Joe Semola Calculator</span>
+        <span className="font-bold text-xl mb-2">
+          Joe Semola <br />
+          🍞 Bread Calculator
+        </span>
       </div>
     </div>
   );

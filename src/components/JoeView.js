@@ -52,7 +52,7 @@ const JoeView = ({ setCurrentView }) => {
   return (
     <div className="p-4 border rounded-lg">
       <h2 className="text-3xl font-bold mb-4">
-        {"Joe Semola Bread Calculator"}
+        {"Joe Semola 🍞 Bread Calculator"}
       </h2>
       <p>starting time</p>
 
