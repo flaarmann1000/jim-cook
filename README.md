@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# 🥗 Jim Cook  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Jim Cook** is a personal **recipe organizer app** powered by Generative AI.  
+It was born out of frustration:  
+- Some recipe sites display ingredients beautifully alongside steps.  
+- Others bury you under **family history essays** before showing the actual recipe. 🙃  
 
-## Available Scripts
+With **Jim Cook**, you can **extract recipes from any website** and reformat them exactly how you want — clean, simple, and ready to cook.  
+Think of it as your own **personal cooking book**, always organized the way *you* like it.  
 
-In the project directory, you can run:
+Built with [Create React App](https://create-react-app.dev).  
 
-### `npm start`
+checkout my [portfolio](https://felixlaarmann.de/portfolio/jim-cook/) for more information.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/21653e83-ba28-43f9-bdbc-051fcd291c4e" width="24%" />
+  <img src="https://github.com/user-attachments/assets/02140143-57bc-4ced-8a5e-3860a6f4aeaf" width="24%" />
+  <img src="https://github.com/user-attachments/assets/93dd78ee-dcc8-419d-9025-44ede6734e3f" width="24%" />
+  <img src="https://github.com/user-attachments/assets/560e48d0-5079-465c-9c81-d50d5773eeb9" width="24%" />
+</p>
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Features  
+- 🌐 Extract recipes from **any website**  
+- 📝 Ingredients shown **next to each cooking step**  
+- 📖 Save recipes to your **personal cookbook**  
+- 📱 Works as an installable **Progressive Web App (PWA)** on your phone  
+- ⚡ Powered by **GenAI** for recipe parsing and formatting  
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠️ Getting Started  
 
-### `npm run build`
+### Prerequisites  
+- Node.js (>= 14.x)  
+- npm or yarn  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation  
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/jim-cook.git
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Navigate into the project
+cd jim-cook
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Install dependencies
+npm install
+# or
+yarn install
+```
 
-### `npm run eject`
+### Running the App  
+```bash
+npm start
+# or
+yarn start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The app will run at [http://localhost:3000](http://localhost:3000)  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## ⏱️ Development Story  
+This project was built in just **6 hours** with help from **ChatGPT**.  
+The result: a functional WebApp you can install on your phone and start using immediately.  
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+If you’re curious about **GenAI-powered app development** with even less coding involvement, check out the new **Artefacts feature** in Claude 3.5 Sonnet — it’s a game changer!  
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🤝 Contributing  
+Contributions are welcome!  
+- Fork the repo  
+- Create a feature branch  
+- Submit a pull request  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 📜 License  
+This project is licensed under the MIT License.  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+✨ Say hello to **Jim Cook** — your AI-powered, clutter-free recipe companion!  
